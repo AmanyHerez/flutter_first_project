@@ -310,7 +310,8 @@ class _RestaurantScreenState extends State<RestaurantScreen> {
                 shrinkWrap: true,
                 physics: NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
-                  return AllResturantWidget();
+                  return Text('');
+                    //AllResturantWidget(allResturant: ,);
                 },
                 separatorBuilder: (context, index) {
                   return const Divider(

@@ -315,20 +315,23 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             ListView.separated(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return AllResturantWidget();
-                },
-                separatorBuilder: (context, index) {
-                  return const Divider(
-                    indent: 5,
-                    endIndent: 5,
-                    color: Colors.grey,
-                    height: 15,
-                  );
-                },
-                itemCount: 5)
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemBuilder: (context, index) {
+                return AllResturantWidget(
+                  allResturant: resturant[index].allResturant!,
+                );
+              },
+              separatorBuilder: (context, index) {
+                return const Divider(
+                  indent: 5,
+                  endIndent: 5,
+                  color: Colors.grey,
+                  height: 15,
+                );
+              },
+              itemCount: resturant.length,
+            ),
           ],
         ),
       ),

@@ -1,9 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_fist_project_gsg/data/resturant_model.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+
 class AllResturantWidget extends StatelessWidget {
-  const AllResturantWidget({
-    Key? key,
-  }) : super(key: key);
+  AllResturant? allResturant;
+
+  AllResturantWidget({required this.allResturant});
 
   @override
   Widget build(BuildContext context) {
@@ -12,22 +15,28 @@ class AllResturantWidget extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(12),
-          child: const Image(
-            width: 120,
-            height: 100,
+          child: CachedNetworkImage(
+            imageUrl: allResturant!.image ?? 'not defined',
             fit: BoxFit.cover,
-            image: AssetImage(
-              'image/imge1.png',
-            ),
+            width: 120,
+            height: 90,
           ),
+          // Image(
+          //   width: 120,
+          //   height: 100,
+          //   fit: BoxFit.cover,
+          //   image: AssetImage(
+          //     'image/imge1.png',
+          //   ),
+          // ),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Mc Donald\'s ',
+              Text(
+                allResturant!.name ?? " not define",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                 ),
@@ -51,8 +60,7 @@ class AllResturantWidget extends StatelessWidget {
                 allowHalfRating: true,
                 itemCount: 5,
                 itemSize: 15,
-                itemPadding:
-                const EdgeInsets.symmetric(horizontal: 2.0),
+                itemPadding: const EdgeInsets.symmetric(horizontal: 2.0),
                 itemBuilder: (context, _) => Icon(
                   Icons.star,
                   color: Colors.amber,
