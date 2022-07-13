@@ -30,6 +30,9 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       body: _bnScreen[_currentIndex].widget,
       bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        mouseCursor: MouseCursor.defer,
         type: BottomNavigationBarType.fixed,
         onTap: (int value) {
           setState(() {

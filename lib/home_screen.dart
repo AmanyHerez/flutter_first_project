@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fist_project_gsg/data/dummy_data.dart';
 import 'package:flutter_fist_project_gsg/model/bn_screen.dart';
 import 'package:flutter_fist_project_gsg/save_screen.dart';
 import 'package:flutter_fist_project_gsg/shope_screen.dart';
@@ -106,16 +107,15 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             SizedBox(
               height: 80,
-              child: ListView(
+              child: ListView.builder(
+                itemCount: resturant.length,
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
-                children: [
-                  CategoriseWidget(),
-                  CategoriseWidget(),
-                  CategoriseWidget(),
-                  CategoriseWidget(),
-                  CategoriseWidget(),
-                ],
+                itemBuilder: (context, index) {
+                  return CategoriseWidget(
+                    categories: resturant[index].categories,
+                  );
+                },
               ),
             ),
             Row(
@@ -157,7 +157,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-
             Row(
               children: [
                 Text(
@@ -248,7 +247,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Row(
               children: [
                 const Text(
@@ -277,7 +278,9 @@ class _HomeScreenState extends State<HomeScreen> {
               child: GridView(
                 scrollDirection: Axis.horizontal,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 1, mainAxisSpacing: 10, mainAxisExtent: 280),
+                    crossAxisCount: 1,
+                    mainAxisSpacing: 10,
+                    mainAxisExtent: 280),
                 children: [
                   PopularRestaurantsWidget(),
                   PopularRestaurantsWidget(),
